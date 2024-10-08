@@ -1,1 +1,17 @@
-<p>accueil works!</p>
+<div class="card-container">
+  <app-card
+    *ngFor="let player of players"
+    [short_name]="player.short_name"
+    [club_position]="player.club_position"
+    [club_logo_url]="player.club_logo_url"
+    [club_flag_url]="player.club_flag_url"
+    [player_face_url]="player.player_face_url"
+    [overall]="player.overall"
+    [pace]="player.pace"
+    [shooting]="player.shooting"
+    [passing]="player.passing"
+    [dribbling]="player.dribbling"
+    [defending]="player.defending"
+    [physic]="player.physic">
+  </app-card>
+</div>

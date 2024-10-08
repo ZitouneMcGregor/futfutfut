@@ -1,1 +1,30 @@
-<p>card works!</p>
+<div class="fut-card" [ngStyle]="{'background-color': getCardColor()}">
+    <div class="card-header">
+      <div class="club-logo">
+        <img [src]="club_logo_url" alt="Club Logo" />
+      </div>
+      <div class="player-position">{{ club_position }}</div>
+      <div class="club-flag">
+        <img [src]="club_flag_url" alt="Country Flag" />
+      </div>
+    </div>
+    
+    <div class="player-face">
+      <img [src]="player_face_url" alt="Player Face" />
+    </div>
+  
+    <div class="player-info">
+      <div class="player-name">{{ short_name }}</div>
+      <div class="player-overall">{{ overall }}</div>
+    </div>
+  
+    <div class="player-stats">
+      <div class="stat">PAC<span>{{ pace }}</span></div>
+      <div class="stat">SHO<span>{{ shooting }}</span></div>
+      <div class="stat">PAS<span>{{ passing }}</span></div>
+      <div class="stat">DRI<span>{{ dribbling }}</span></div>
+      <div class="stat">DEF<span>{{ defending }}</span></div>
+      <div class="stat">PHY<span>{{ physic }}</span></div>
+    </div>
+  </div>
+  
