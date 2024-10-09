@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  
-    background-image: url('https://t1.uc.ltmcdn.com/fr/posts/8/4/8/quelle_est_la_taille_d_un_terrain_de_football_12848_orig.jpg');
-    background-size: cover; // Pour couvrir toute la zone visible
-    background-repeat: no-repeat; // Pour éviter la répétition de l'image
-    background-position: center; // Centrer l'image
-    height: 100vh; // Assurez-vous que le corps prend toute la hauteur de la vue
-    color: #fff; // Mettre la couleur du texte en blanc pour le contraste
-  }
-  
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+
+  background-image: url('https://t1.uc.ltmcdn.com/fr/posts/8/4/8/quelle_est_la_taille_d_un_terrain_de_football_12848_orig.jpg');
+  background-size: cover; /* Pour couvrir toute la zone visible */
+  background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+  background-position: center; /* Centrer l'image */
+  background-attachment: fixed; /* Rendre l'image de fond fixe */
+  height: 100vh; /* Assurez-vous que le corps prend toute la hauteur de la vue */
+  color: #fff; /* Mettre la couleur du texte en blanc pour le contraste */
+}
