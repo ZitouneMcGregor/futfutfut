@@ -1,7 +1,7 @@
 <div class="card-container">
   <ng-container *ngFor="let player of players">
     <app-card
-      *ngIf="player.clubPosition !== 'GK'"
+      *ngIf="player.pace !== 0"
       [short_name]="player.shortName"
       [club_position]="player.clubPosition"
       [club_logo_url]="player.clubLogoUrl"
