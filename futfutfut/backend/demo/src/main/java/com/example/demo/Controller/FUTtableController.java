@@ -1,23 +1,28 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.FUTtable;
-import com.example.demo.Repository.FUTtableRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/joueurs")
-@CrossOrigin(origins = "http://localhost:4200")
 public class FUTtableController {
 	
 	@Autowired
-	private FUTtableRepository futtableRepository;
+	private FUTtableService futtableService;
 	
 	@GetMapping
 	public List<FUTtable> getAllFut(){
-		return futtableRepository.findAll();
+		return futtableService.getAllFut() ;
 	}
-
+	
+    @PostMapping
+    public ResponseEntity<FUTtable> createPlayer(@RequestBody FUTtable player) {
+        FUTtable createdPlayer = futtableService.createPlayer(player);
+        return ResponseEntity.ok(createdPlayer);
+    }
+	
+	
 }
