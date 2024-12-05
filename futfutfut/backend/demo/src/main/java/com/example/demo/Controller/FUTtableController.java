@@ -1,8 +1,11 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.FUTtable;
-import com.example.demo.Repository.FUTtableRepository;
+
+import Services.FUTtableService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +15,19 @@ import java.util.List;
 public class FUTtableController {
 	
 	@Autowired
-	private FUTtableRepository futtableRepository;
+	private FUTtableService futtableService;
 	
 	@GetMapping
 	public List<FUTtable> getAllFut(){
-		return futtableRepository.findAll();
+		return futtableService.getAllFut() ;
 	}
+	
+    @PostMapping
+    public ResponseEntity<FUTtable> createPlayer(@RequestBody FUTtable player) {
+        FUTtable createdPlayer = futtableService.createPlayer(player);
+        return ResponseEntity.ok(createdPlayer);
+    }
+	
+	
 
 }
