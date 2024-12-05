@@ -1,8 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.FUTtable;
-
-import Services.FUTtableService;
+import com.example.demo.Services.FUTtableService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
