@@ -1,0 +1,8 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));  // Chaque carte fait 220px minimum
+    grid-gap: 20px;  // Espacement entre les cartes
+    justify-items: center;  // Centrer les cartes dans chaque cellule
+    padding: 20px;  // Espace autour des cartes
+  }
+  
