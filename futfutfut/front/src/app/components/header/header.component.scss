@@ -1,0 +1,27 @@
+.app-header {
+    background-color: #e0b54c;  // Couleur de fond, tu peux changer ça selon tes besoins
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  // Légère ombre pour l'effet visuel
+  
+    .header-title {
+      margin: 0;
+  
+      .header-link {
+        color: #fff;  // Couleur du texte
+        text-decoration: none;  // Supprime le soulignement du lien
+        font-size: 2em;  // Taille du texte
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 5px;  // Espacement entre les lettres
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #b0842a;  // Changement de couleur au survol
+        }
+      }
+    }
+  }
+  

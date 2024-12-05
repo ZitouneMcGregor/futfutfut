@@ -1,0 +1,19 @@
+<div class="card-container">
+  <ng-container *ngFor="let player of players">
+    <app-card
+      *ngIf="player.pace !== 0"
+      [short_name]="player.shortName"
+      [club_position]="player.clubPosition"
+      [club_logo_url]="player.clubLogoUrl"
+      [club_flag_url]="player.nationFlagUrl"
+      [player_face_url]="player.playerFaceUrl"
+      [overall]="player.overall"
+      [pace]="player.pace"
+      [shooting]="player.shooting"
+      [passing]="player.passing"
+      [dribbling]="player.dribbling"
+      [defending]="player.defending"
+      [physic]="player.physic">
+    </app-card>
+  </ng-container>
+</div>
