@@ -1,0 +1,50 @@
+<div class="form-container">
+    <h2>Ajouter un joueur</h2>
+  
+    <form (ngSubmit)="addPlayer()">
+      <div class="form-group">
+        <label for="shortName">Nom :</label>
+        <input id="shortName" [(ngModel)]="newPlayer.shortName" name="shortName" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="clubPosition">Position :</label>
+        <input id="clubPosition" [(ngModel)]="newPlayer.clubPosition" name="clubPosition" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="pace">Vitesse :</label>
+        <input type="number" id="pace" [(ngModel)]="newPlayer.pace" name="pace" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="shooting">Tir :</label>
+        <input type="number" id="shooting" [(ngModel)]="newPlayer.shooting" name="shooting" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="passing">Passes :</label>
+        <input type="number" id="passing" [(ngModel)]="newPlayer.passing" name="passing" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="dribbling">Dribble :</label>
+        <input type="number" id="dribbling" [(ngModel)]="newPlayer.dribbling" name="dribbling" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="defending">Défense :</label>
+        <input type="number" id="defending" [(ngModel)]="newPlayer.defending" name="defending" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="physic">Physique :</label>
+        <input type="number" id="physic" [(ngModel)]="newPlayer.physic" name="physic" required>
+      </div>
+  
+      <button type="submit">Ajouter</button>
+    </form>
+  
+    <p class="message">{{ message }}</p>
+  </div>
+  
