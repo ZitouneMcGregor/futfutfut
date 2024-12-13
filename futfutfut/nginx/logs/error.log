@@ -1,0 +1,28 @@
+2024/12/13 17:22:41 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:1
+2024/12/13 17:24:47 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:2
+2024/12/13 17:27:23 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:2
+2024/12/13 17:28:46 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:2
+2024/12/13 17:34:01 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:2
+2024/12/13 17:35:36 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:2
+2024/12/13 17:38:03 [emerg] 1#1: no "events" section in configuration
+2024/12/13 17:51:51 [emerg] 1#1: unexpected end of file, expecting "}" in /etc/nginx/nginx.conf:48
+2024/12/13 17:52:16 [emerg] 1#1: duplicate location "/" in /etc/nginx/nginx.conf:34
+2024/12/13 17:53:29 [error] 28#28: *1 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:30 [error] 28#28: *2 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:36 [error] 28#28: *3 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:37 [error] 28#28: *4 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:37 [error] 28#28: *5 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:37 [error] 28#28: *6 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:55 [error] 28#28: *7 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:56 [error] 28#28: *8 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:56 [error] 28#28: *9 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:53:56 [error] 28#28: *10 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:00 [error] 28#28: *11 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:00 [error] 28#28: *12 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:01 [error] 28#28: *13 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:01 [error] 28#28: *14 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:01 [error] 28#28: *15 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:01 [error] 28#28: *16 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:02 [error] 28#28: *17 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:54:02 [error] 28#28: *18 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.23.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:8080"
+2024/12/13 17:56:05 [emerg] 1#1: no "events" section in configuration
