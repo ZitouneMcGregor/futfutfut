@@ -14,12 +14,16 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Copier le fichier JAR généré depuis l'étape précédente
+# ----- (1) On copie le script 'wait-for-it.sh' dans l'image -----
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
+# Copier le jar Spring Boot généré lors de la 1ère étape
 COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Exposer le port utilisé par Spring Boot
 EXPOSE 8080
 
-# Commande pour exécuter l'application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# ----- (2) On modifie l'ENTRYPOINT pour attendre MySQL avant Java -----
+ENTRYPOINT ["/wait-for-it.sh", "mysql_master:3306", "--timeout=60", "--strict", "--", "java", "-jar", "app.jar"]
 
