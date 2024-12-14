@@ -1,5 +1,6 @@
 # Étape 1 : Construction du projet avec Maven
 FROM maven:3.9.4-eclipse-temurin-17 AS builder
+
 WORKDIR /app
 # Copier le fichier pom.xml pour télécharger les dépendances
 COPY pom.xml ./

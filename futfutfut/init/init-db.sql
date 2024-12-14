@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Configuration MySQL Master
 
 SET GLOBAL server_id = 1;
--- SET GLOBAL log_bin = 'mysql-bin';
+SET GLOBAL log_bin = 'mysql-bin';
 
 -- Création d'un utilisateur de réplication
 CREATE USER 'replicator'@'%' IDENTIFIED BY 'replicator_password';

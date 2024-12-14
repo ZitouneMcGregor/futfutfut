@@ -1,7 +1,52 @@
 version: "3.8"
 
 services:
-  # --- Load Balancer (Nginx)
+  
+services:
+  # --- MySQL Master
+  mysql_master:
+    image: mysql:8.0
+    container_name: mysql_master
+    ports:
+      - "3307:3306"
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./init/master:/docker-entrypoint-initdb.d
+      - ./init/master/my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "--password=root_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  # --- MySQL Slave
+  mysql_slave:
+    image: mysql:8.0
+    container_name: mysql_slave
+    ports:
+      - "3308:3306"
+    networks:
+      - backend
+    depends_on:
+      - mysql_master
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./init/slave:/docker-entrypoint-initdb.d
+      - ./init/slave/my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "--password=root_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+  # --- Nginx
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -53,6 +98,8 @@ services:
       - "8083:8080"
     networks:
       - backend
+    command: >
+      sh -c "until mysqladmin ping -h mysql_master -u root --password=root_password --silent; do echo 'Waiting for MySQL Master'; sleep 5; done && java -jar app.jar"
 
   spring_app2:
     build:
@@ -68,78 +115,14 @@ services:
       - "8084:8080"
     networks:
       - backend
-
-  # --- MySQL Master
-  mysql_master:
-    image: mysql:8.0
-    container_name: mysql_master
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=mydb
-    volumes:
-      - mysql_master_data:/var/lib/mysql
-      - ./init-scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-    ports:
-      - "3307:3306"
-    networks:
-      - backend
-
-  # --- MySQL Slave
-  mysql_slave:
-    image: mysql:8.0
-    container_name: mysql_slave
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=mydb
-      - MYSQL_REPLICATION_MODE=slave
-      - MYSQL_MASTER_HOST=mysql_master
-      - MYSQL_MASTER_USER=replicator
-      - MYSQL_MASTER_PASSWORD=replicator_password
-    volumes:
-      - mysql_slave_data:/var/lib/mysql
-    depends_on:
-      - mysql_master
-    ports:
-      - "3308:3306"
-    networks:
-      - backend
-
-  # --- Elasticsearch
-#  elasticsearch:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
-#    container_name: elasticsearch
-#    environment:
-#      - discovery.type=single-node
-#      - ES_JAVA_OPTS=-Xms512m -Xmx512m
-#    volumes:
-#      - elasticsearch_data:/usr/share/elasticsearch/data
-#    ports:
-#      - "9200:9200"
-#    networks:
-#      - backend
-      
-
-  # --- Logstash
-#  logstash:
-#    image: docker.elastic.co/logstash/logstash:8.10.2
-#    container_name: logstash
-#    volumes:
-#      - ./elk-stack/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-#    ports:
-#      - "5044:5044"
-#    networks:
-#      - backend
-#    depends_on:
-#      - elasticsearch  # Pour être sûr que Logstash démarre après Elasticsearch
+    command: >
+      sh -c "until mysqladmin ping -h mysql_slave -u root --password=root_password --silent; do echo 'Waiting for MySQL Slave'; sleep 5; done && java -jar app.jar"
 
 volumes:
-  mysql_master_data:
   mysql_slave_data:
-  elasticsearch_data:
 
 networks:
   frontend:
     driver: bridge
   backend:
     driver: bridge
-
