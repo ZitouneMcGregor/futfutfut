@@ -45,15 +45,10 @@ Voici un aperçu de l’architecture globale (front, back, BDD, NGINX).
 Cela va construire les images (Angular, Spring Boot) et démarrer tous les conteneurs (Nginx, MySQL Master/Slave, ELK, etc.).
 
 Une fois le déploiement terminé, ouvrez votre navigateur sur :
-       - http://localhost:8080 : Proxy Nginx (redirige automatiquement vers Angular).
-       - http://localhost:5601 : Interface Kibana (voir et analyser les logs).
-       - http://localhost:9200 : Elasticsearch (API REST, pas d’interface graphique).
+   - http://localhost:8080 : Proxy Nginx (redirige automatiquement vers Angular).
+   - http://localhost:5601 : Interface Kibana (voir et analyser les logs).
+   - http://localhost:9200 : Elasticsearch (API REST, pas d’interface graphique).
 
-## Logs & Monitoring
-
-Nginx écrit ses logs dans ./nginx/logs.
-Logstash agrège ces logs et les envoie vers Elasticsearch.
-Kibana (port 5601) permet de consulter et d’analyser ces logs en temps réel.
 
 ## Exemple d’analyse
 
