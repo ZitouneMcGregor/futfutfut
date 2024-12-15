@@ -57,4 +57,4 @@ Créez un “index pattern” pour nginx-logs-*.
 Allez dans l’onglet Discover pour voir les logs.
 
 ## Pour arrêter la stack, faire :
-docker-compose down
+docker-compose down -v
