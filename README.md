@@ -10,7 +10,7 @@ CARRERE-GEE Olivier
 
 ## Architecture
 
-Voici un aperçu de l’architecture globale (front, back, BDD, load balancer, ELK...).  
+Voici un aperçu de l’architecture globale (front, back, BDD, NGINX).  
 ![Architecture Diagram](graphique.png)
 
 ### Composants principaux
