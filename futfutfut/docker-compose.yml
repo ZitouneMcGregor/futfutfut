@@ -1,3 +1,5 @@
+version: '3.8'  # Assurez-vous de spécifier une version compatible avec votre environnement
+
 services:
   # --- MySQL Master
   mysql_master:
