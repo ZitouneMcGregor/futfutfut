@@ -1,5 +1,3 @@
-version: "3.8"
-  
 services:
   # --- MySQL Master
   mysql_master:
@@ -116,7 +114,55 @@ services:
     command: >
       sh -c "until mysqladmin ping -h mysql_slave -u root --password=root_password --silent; do echo 'Waiting for MySQL Slave'; sleep 5; done && java -jar app.jar"
 
+  # --- ELK
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - backend
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.13
+    container_name: logstash
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./nginx/logs:/var/log/nginx
+    environment:
+      LS_JAVA_OPTS: "-Xms256m -Xmx256m"
+    ports:
+      - "5044:5044"
+      - "5000:5000"
+    networks:
+      - backend
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.13
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+    networks:
+      - backend
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+
 volumes:
+  es_data:
   mysql_slave_data:
 
 networks:
